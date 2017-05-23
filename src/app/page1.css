@@ -1,0 +1,6 @@
+.clickable{
+    cursor: pointer;
+}
+.selected-content:hover{
+    background: #f09d9d;
+}

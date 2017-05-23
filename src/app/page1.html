@@ -1,0 +1,8 @@
+<detail [content]="selectedContent"></detail>
+
+<div [ngClass]="'row'">
+    <div *ngFor="let c of contents" [ngClass]="'col-md-4 selected-content clickable'" (click)="getSelectedContent(c)">
+        <h3>{{c.title}}</h3>
+        <p>{{c.body}}</p>
+    </div>
+</div>
