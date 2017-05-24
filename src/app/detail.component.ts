@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Content } from './Content';
 
 @Component({
@@ -53,14 +53,15 @@ import { Content } from './Content';
 })
 
 export class DetailComponent {
-    @Input() content: Content;
-    constructor(){
+    @Input('content') content: Content;
+    @Output() onClearContent = new EventEmitter();
     
+    constructor(){
     }
     
     clearSelect():void{
-        
         this.content = null;
+        this.onClearContent.emit('test event string');
     }
     
 }

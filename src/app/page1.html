@@ -1,4 +1,4 @@
-<detail [content]="selectedContent"></detail>
+<detail [content]="selectedContent" (onClearContent)="handleEventFromDetail($event)"></detail>
 
 <div [ngClass]="'row'">
     <div *ngFor="let c of contents" [ngClass]="'col-md-4 selected-content clickable'" (click)="getSelectedContent(c)">
