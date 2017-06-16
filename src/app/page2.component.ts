@@ -11,10 +11,10 @@ export class Page2Component {
   id:number;
   author:string;
     
-  constructor(route: ActivatedRoute){
-      this.id = route.snapshot.params['id'];
-      this.author = route.snapshot.params['author'];
-  }
+  constructor(private route: ActivatedRoute){ }
     
-  
+  ngOnInit(){
+      this.id = this.route.snapshot.params['id'];
+      this.author = this.route.snapshot.params['author'];
+  }
 }
