@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { Router} from '@angular/router';
+import 'rxjs/Rx';
+import {HttpModule} from '@angular/http';
+import {Http} from '@angular/http';
+import {Observable} from 'rxjs/Observable';
 
 import { Content } from './Content';
 import { HelloService } from './hello.service';
@@ -17,18 +21,32 @@ export class Page1Component {
     private contents:Content[];
     private selectedContent:Content;
     private detail_open:boolean;
+    private status:number;
+    private error:string;
+    private url:string
     
-    constructor(private router: Router, private helloservice: HelloService){
+    constructor(private router: Router, private helloservice: HelloService, private _http: Http){
         
         this.title = '@@@This is page1@@@';
-        this.body_template = 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus';
-        this.counter_limit = 10;
+//        this.body_template = 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus';
+        this.url = 'http://192.168.88.77/fuel/search/list.json';
         this.contents = [];
         
-        for( let i=0; i<this.counter_limit; i++){
-            
-            this.contents.push(new Content(i, 'title' + i, this.body_template, 'yamada' + i));
-        }
+        //取得
+        this._http.get(this.url)
+          .subscribe(
+            res  => {
+              this.contents = res.json();
+              this.status = res.status;
+              this.error = "";
+            },
+            error => {
+              this.error = error.text().substr(287,100);
+              this.status = error.status;
+              this.contents = [];
+              console.log('NG');
+              console.log(this.contents);
+            },);
     }
     
     clickTitle( id:number, author:string ): void{
@@ -44,5 +62,15 @@ export class Page1Component {
         console.log('event catch');
         console.log(e);
         this.selectedContent = null;
+    }
+    
+    callCal(){
+        
+        console.log(this.calTest(4, 8));
+    }
+
+    calTest(a:number, b:number){
+        
+        return a + b;
     }
 }

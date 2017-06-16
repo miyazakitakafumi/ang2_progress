@@ -2,7 +2,8 @@
 
 <div [ngClass]="'row'">
     <div *ngFor="let c of contents" [ngClass]="'col-md-4 selected-content clickable'" (click)="getSelectedContent(c)">
-        <h3>{{c.title}}</h3>
-        <p>{{c.body}}</p>
+        <h3>{{c.kosekishimei_nihongo_mei}}</h3>
+        <p>{{c.seinengappi}}</p>
     </div>
+    <button type="button" [ngClass]="'btn btn-warning'" (click)="callCal()">cal</button>
 </div>
