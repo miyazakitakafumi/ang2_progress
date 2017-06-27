@@ -68,4 +68,10 @@ export class DetailComponent implements OnChanges{
         console.log(changes);
     }
     
+    //@ViewChild の動作検証用
+    sayHelloChild(){
+        
+        console.log('hello this is child method');
+    }
+    
 }

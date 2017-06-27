@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef, ElementRef } from '@angular/core';
 import { Router} from '@angular/router';
 import 'rxjs/Rx';
 import {HttpModule} from '@angular/http';
@@ -7,6 +7,7 @@ import {Observable} from 'rxjs/Observable';
 
 import { Content } from './Content';
 import { HelloService } from './hello.service';
+import { DetailComponent } from './detail.component';
 
 @Component({
   selector: 'page1',
@@ -15,6 +16,9 @@ import { HelloService } from './hello.service';
 })
 export class Page1Component {
         
+    @ViewChild(DetailComponent) private detail: DetailComponent;
+//    @ViewChild('DetailComponent', {read: ViewContainerRef}) private detail: ViewContainerRef;
+    
     private title:string;
     private body_template:string;
     private counter_limit;
@@ -45,8 +49,6 @@ export class Page1Component {
               this.error = error.text().substr(287,100);
               this.status = error.status;
               this.contents = [];
-              console.log('NG');
-              console.log(this.contents);
           },);
     }
     
@@ -73,5 +75,11 @@ export class Page1Component {
     calTest(a:number, b:number){
         
         return a + b;
+    }
+    
+    //子要素のメソッド呼び出し(テスト用) 
+    callChildSay(){
+        console.log(this.detail);
+        this.detail.sayHelloChild();
     }
 }
