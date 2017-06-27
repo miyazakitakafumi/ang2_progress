@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {MyheaderComponent} from "./myheader.component";
-import {Page1Component} from "./page1.component";
-import {Page2Component} from "./page2.component";
+import {MyheaderComponent} from "../header/myheader.component";
+import {Page1Component} from "../page1/page1.component";
+import {Page2Component} from "../page2/page2.component";
 
 export const ROUTE = [
     { path: '', component: Page1Component},
@@ -10,8 +10,8 @@ export const ROUTE = [
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app/app.component.html',
-  styleUrls: ['./app/app.component.css']
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'app works!';

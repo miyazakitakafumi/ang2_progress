@@ -1,4 +1,4 @@
-<div [ngClass]="'row'" *ngIf="content">
+<div [ngClass]="'row'">
     
     <div [ngClass]="'row'">
         <div [ngClass]="'col-md-8'">
@@ -10,24 +10,18 @@
     </div>
 
         <div [ngClass]="'row detail-row'">
-            <div [ngClass]="'col-md-2 detail-col'">
-                <h3>ID</h3>
-                <p>{{content.id}}</p>
+            <div [ngClass]="'col-md-3 detail-col'">
+                <p>{{text}}</p>
             </div>
-
+<!--
             <div [ngClass]="'col-md-3 detail-col'">
                 <h3>TITLE</h3>
                 <p>{{content.title}}</p>
             </div>
-
             <div [ngClass]="'col-md-4 detail-col'">
                 <h3>BODY</h3>
                 <p>{{content.body}}</p>
             </div>
-
-            <div [ngClass]="'col-md-3 detail-col'">
-                <h3>AUTHOR</h3>
-                <p>{{content.author}}</p>
-            </div>
+-->
         </div>
 </div>
