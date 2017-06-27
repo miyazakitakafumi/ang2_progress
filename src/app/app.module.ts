@@ -4,9 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule} from '@angular/router';
 
-import { HelloService } from './hello.service'; 
+import { HelloService } from './service/hello.service'; 
 
 import { AppComponent, ROUTE } from './app.component';
+import { MyheaderComponent } from "./myheader.component";
 import { Page1Component } from "./page1.component";
 import { Page2Component } from "./page2.component";
 import { DetailComponent } from "./detail.component";
@@ -14,6 +15,7 @@ import { DetailComponent } from "./detail.component";
 @NgModule({
   declarations: [
     AppComponent,
+    MyheaderComponent,
     Page1Component,
     Page2Component,
     DetailComponent
@@ -25,7 +27,8 @@ import { DetailComponent } from "./detail.component";
     RouterModule.forRoot(ROUTE)
   ],
   providers: [
-      HelloService
+      HelloService,
+      {provide: 'SERVICE_PATH', useValue: './service/'}
     ],
   bootstrap: [AppComponent]
 })

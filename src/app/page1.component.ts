@@ -6,13 +6,13 @@ import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 
 import { Content } from './Content';
-import { HelloService } from './hello.service';
+import { HelloService } from './service/hello.service';
 import { DetailComponent } from './detail.component';
 
 @Component({
   selector: 'page1',
-  templateUrl: './page1.html',
-  styleUrls: ['./page1.css']
+  templateUrl: './page1/page1.html',
+  styleUrls: ['./page1/page1.css']
 })
 export class Page1Component {
         
