@@ -7,6 +7,7 @@ import { RouterModule} from '@angular/router';
 
 import { HelloService } from './service/hello.service'; 
 import { ModalService } from './modal/modal.service';
+import { ObservetestService } from './observetest/observetest.service';
 
 import { AppComponent, ROUTE } from './app/app.component';
 import { MyheaderComponent } from "./header/myheader.component";
@@ -14,6 +15,8 @@ import { Page1Component } from "./page1/page1.component";
 import { Page2Component } from "./page2/page2.component";
 import { DetailComponent } from "./detail/detail.component";
 import { ModalComponent } from "./modal/modal.component";
+import { SubComponent } from "./subscribe/sub.component";
+import { TestpageComponent, VcrComponent, UnlessDirective } from "./testpage/testpage.component";
 
 @NgModule({
   declarations: [
@@ -22,7 +25,11 @@ import { ModalComponent } from "./modal/modal.component";
     Page1Component,
     Page2Component,
     DetailComponent,
-    ModalComponent
+    ModalComponent,
+    SubComponent,
+    TestpageComponent,
+    VcrComponent,
+    UnlessDirective
   ],
   imports: [
     BrowserModule,
@@ -33,6 +40,7 @@ import { ModalComponent } from "./modal/modal.component";
   providers: [
       HelloService,
       ModalService,
+      ObservetestService,
       {provide: 'SERVICE_PATH', useValue: './service/'},
       {provide: 'DETAIL_TEXT_TOKEN', useValue: 'aaa'}
     ],

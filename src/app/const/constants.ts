@@ -4,3 +4,7 @@ export const DIRS = {
 };
 
 export const HOST = window.location.hostname;
+
+export const TEST = {
+    'TEST1' : 'test1'
+};

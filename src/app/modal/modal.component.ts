@@ -22,6 +22,7 @@ export class ModalComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.modal.content$.subscribe(
       value => {
+      console.log(value);
         if (value) {
           this.display = '';
         } else {
