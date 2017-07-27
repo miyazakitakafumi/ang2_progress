@@ -1,4 +1,4 @@
-<div [ngClass]="'row detail-row'" *ngIf="report">
+<div [ngClass]="'row detail-row my-box'" *ngIf="report">
     
 <!--
     <div [ngClass]="'row'">
@@ -13,18 +13,25 @@
 
         <div [ngClass]="'row'">
             <div [ngClass]="'col-md-6 col-md-offset-3 detail-col'">
-                <h3>TITLE</h3>
-                <p>{{report.title}}</p>
+                <h2>Report Detail</h2>
             </div>
             <div [ngClass]="'col-md-6 col-md-offset-3 detail-col'">
-                <h3>BODY</h3>
-                <p>{{report.body}}</p>
+                 <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" name="title" class="form-control" value="{{report.title}}" [disabled]="isDisableForm">
+                </div>
+            </div>
+            <div [ngClass]="'col-md-6 col-md-offset-3 detail-col'">
+                 <div class="form-group">
+                    <label>Body</label>
+                    <textarea name="body" class="form-control" rows="20" maxlength="250" [disabled]="isDisableForm">{{report.body}}</textarea>
+                </div>
             </div>
             <div [ngClass]="'col-md-3 col-md-offset-3 text-right'">
                 <button type="button" [ngClass]="'btn btn-default detail-close'" (click)="clearSelect()">Close</button>
              </div>
             <div [ngClass]="'col-md-6'">
-                <button type="button" [ngClass]="'btn btn-warning detail-close'" (click)="clearSelect()">Update</button>
+                <button type="button" [ngClass]="'btn btn-default detail-close'" (click)="clearSelect()">Update</button>
              </div>
         </div>
 </div>

@@ -38,6 +38,7 @@ export class Page1Component {
     private error:string;           //レスポンスのエラー
     private url:string              //URL
     private openCreateReportForm :boolean //日報作成画面のON/OFFフラグ
+    private reportDate :string //日報作成画面のON/OFFフラグ
     
     constructor(
         private router: Router, 
@@ -46,15 +47,20 @@ export class Page1Component {
         private modal: ModalService,
         private obt: ObservetestService
     ){
+        //新規日報作成画面のオープンフラグ初期化
         this.openCreateReportForm = false;
+        
+        //今日の日付生成
+        var d = new Date();
+        this.reportDate = d.getFullYear() + "-" + (("0"+(d.getMonth() + 1)).slice(-2)) + "-" + ("0"+d.getDate()).slice(-2); 
     }
     
     /**
      * OnInit処理
      */
     ngOnInit(){
-        this.title = '@@@This is page1@@@';
-        this.body_template = 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus';
+        this.title = 'Title';
+        this.body_template = 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.';
 //        this.url = 'http://192.168.88.77/fuel/dailyreport/search.json';
         this.dailyReportList = [];
         
@@ -76,7 +82,7 @@ export class Page1Component {
         
         //ダミーデータをセット
         for (let i=0; i<10; i++){
-            this.dailyReportList.push({'title': this.title + i, 'body': this.body_template});
+            this.dailyReportList.push({'title': this.title + i, 'date': '2017-07-22', 'body': this.body_template});
         }
         
     }

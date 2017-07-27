@@ -10,6 +10,7 @@ import { ModalService } from '../modal/modal.service';
 
 export class DetailComponent{
     public text: string;
+    private isDisableForm :boolean //編集可能フラグ
     
     @Input() report: any;
     @Output() onClearContent = new EventEmitter();
@@ -17,6 +18,7 @@ export class DetailComponent{
     constructor(
         //private report: any
     ){
+        this.isDisableForm = true;
     }
     
     clearSelect():void{
