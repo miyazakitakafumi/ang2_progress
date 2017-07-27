@@ -12,19 +12,19 @@
 -->
 
         <div [ngClass]="'row'">
-            <div [ngClass]="'col-md-3 col-md-offset-3 detail-col'">
+            <div [ngClass]="'col-md-6 col-md-offset-3 detail-col'">
                 <h3>TITLE</h3>
                 <p>{{report.title}}</p>
             </div>
-            <div [ngClass]="'col-md-4 detail-col'">
+            <div [ngClass]="'col-md-6 col-md-offset-3 detail-col'">
                 <h3>BODY</h3>
                 <p>{{report.body}}</p>
             </div>
-            <div [ngClass]="'col-md-2 text-left'">
-                <button type="button" [ngClass]="'btn btn-warning detail-close'" (click)="clearSelect()">UPDATE</button>
+            <div [ngClass]="'col-md-3 col-md-offset-3 text-right'">
+                <button type="button" [ngClass]="'btn btn-default detail-close'" (click)="clearSelect()">Close</button>
              </div>
-            <div [ngClass]="'col-md-2 text-left'">
-                <button type="button" [ngClass]="'btn btn-default detail-close'" (click)="clearSelect()">CLOSE</button>
+            <div [ngClass]="'col-md-6'">
+                <button type="button" [ngClass]="'btn btn-warning detail-close'" (click)="clearSelect()">Update</button>
              </div>
         </div>
 </div>

@@ -1,4 +1,22 @@
 <detail [report]="selectedReport" (onClearContent)="handleEventFromDetail($event)"></detail>
+
+<!--追加-->
+<button type="button" [ngClass]="'btn btn-default'" (click)="createReport()" *ngIf="!openCreateReportForm">New Report</button>
+<div [ngClass]="'row newReportForm'" *ngIf="openCreateReportForm">
+    <div [ngClass]="'col-md-4 col-md-offset-4'">
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" name="Title" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>name</label>
+            <textarea name="text" class="form-control"></textarea>
+        </div>
+        <button type="button" [ngClass]="'btn btn-default'" (click)="cancelReport()">Cancel</button>
+        <button type="button" [ngClass]="'btn btn-default'" (click)="saveReport()">Save Report</button>
+    </div>
+</div>
+
 <!--<detail></detail>-->
 <!--<sub-test></sub-test>-->
 

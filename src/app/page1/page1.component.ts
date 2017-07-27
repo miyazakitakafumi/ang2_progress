@@ -37,6 +37,7 @@ export class Page1Component {
     private status:number;          //レスポンスのステータス
     private error:string;           //レスポンスのエラー
     private url:string              //URL
+    private openCreateReportForm :boolean //日報作成画面のON/OFFフラグ
     
     constructor(
         private router: Router, 
@@ -44,7 +45,9 @@ export class Page1Component {
         private _http: Http, 
         private modal: ModalService,
         private obt: ObservetestService
-    ){}
+    ){
+        this.openCreateReportForm = false;
+    }
     
     /**
      * OnInit処理
@@ -83,8 +86,12 @@ export class Page1Component {
     }
     
     getselectedReport( report: any):void{
+        this.openCreateReportForm = false; //新規日報作成を閉じる
+        this.selectedReport = null;
         this.selectedReport = report;
         window.scrollTo(0,0);
+        
+        
         //this.detail.setReport(report); //子コンポーネントのメソッド呼び出し
         
         //モーダル用
@@ -97,6 +104,25 @@ export class Page1Component {
     handleEventFromDetail(e){
         console.log(e);
         this.selectedReport = null;
+    }
+    
+    //日報作成画面を開く
+    createReport(){
+        
+        this.openCreateReportForm = true;
+        this.detail.report = null;
+    }
+    
+    //新規日報を保存
+    saveReport(){
+        
+        this.openCreateReportForm = !this.openCreateReportForm;
+    }
+    
+    //新規日報をキャンセル
+    cancelReport(){
+        
+        this.openCreateReportForm = false;
     }
     
     //子要素のメソッド呼び出し(テスト用) 

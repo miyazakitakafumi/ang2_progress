@@ -1,4 +1,6 @@
 .detail-row{
+    margin:10px;
+    padding: 10px;
     border-top: 5px solid #292323;
     border-bottom: 5px solid #292323;
 }
